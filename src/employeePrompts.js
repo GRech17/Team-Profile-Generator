@@ -29,7 +29,7 @@ const generateManager = async () => {
     return data;
 };
 
-const employeeData = async (input = []) => {
+const employeePrompts = async (input = []) => {
     if (input.length === 0) {
         const managerData = await generateManager();
         input.push(managerData);
@@ -82,9 +82,9 @@ const employeeData = async (input = []) => {
 
     const {addEmployee, ...answers} = await inquirer.prompt(prompts);
     const newInput = [...input, answers];
-    return addEmployee? employeeData(newInput):newInput;
+    return addEmployee? employeePrompts(newInput):newInput;
 };
 
-module.exports.employeeData = employeeData;
+module.exports.employeePrompts = employeePrompts;
 
 

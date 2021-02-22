@@ -1,8 +1,4 @@
-const createEmployee = require('./teamCreator').createEmployee;
-var fs = require('fs');
 
-function generateHTML(input) {
-    let htmlContent = `
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -83,13 +79,36 @@ function generateHTML(input) {
     <header><h1>My Team</h1></header>
         
     <section id="team">
-    ${createEmployee(input)}
+    
+    <div class="teamMember">
+        <div class="teamMemberHeading">
+            <h2></h2>
+            <h3><i class="fas fa-tasks"></i> Manager</h3>
+        </div>
+        <div class="teamMemberBody">
+            <div>
+                <p>ID: 1</p>
+                <p>Email: <a href = 'mailto:'></a></p>
+                <p>Office Number: </p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="teamMember">
+        <div class="teamMemberHeading">
+            <h2>dd</h2>
+            <h3><i class="fas fa-code"></i> Engineer</h3>
+        </div>
+        <div class="teamMemberBody">
+            <div>
+                <p>ID: 2</p>
+                <p>Email: <a href = 'mailto:'></a></p>
+                <p>GitHub: <a href = 'https://github.com/'></a></p>
+            </div>
+        </div>
+    </div>
+    
     </section>
 </body>
 </html>
-    `;
-
-    fs.writeFile('./display/htmlContent.html', htmlContent, (error) => {});
-}
-
-module.exports.generateHTML = generateHTML;
+    

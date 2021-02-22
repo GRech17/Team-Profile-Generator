@@ -1,4 +1,8 @@
+const createEmployee = require('../lib/teamCreator').createEmployee;
+var fs = require('fs');
 
+function generateHTML(input) {
+    let htmlContent = `
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -56,13 +60,13 @@
             }
         .teamMemberBody > div{
             border-radius: 5px;
-            box-shadow: 8px -6px 4px 0px rgb(156 196 209);
+            border:1px solid #dfdfdf;
             }
         .teamMemberBody p{
             background-color:rgba(134, 231, 248, 0.705);
             margin:0;
             padding:20px;
-            border:.05px solid #dfdfdfd7;
+            border:1px solid #dfdfdf;
             box-sizing: border-box;
             }   
         @media only screen and (min-width: 768px) {
@@ -79,36 +83,13 @@
     <header><h1>My Team</h1></header>
         
     <section id="team">
-    
-    <div class="teamMember">
-        <div class="teamMemberHeading">
-            <h2></h2>
-            <h3><i class="fas fa-tasks"></i> Manager</h3>
-        </div>
-        <div class="teamMemberBody">
-            <div>
-                <p>ID: 1</p>
-                <p>Email: <a href = 'mailto:'></a></p>
-                <p>Office Number: </p>
-            </div>
-        </div>
-    </div>
-    
-    <div class="teamMember">
-        <div class="teamMemberHeading">
-            <h2></h2>
-            <h3><i class="fas fa-code"></i> Engineer</h3>
-        </div>
-        <div class="teamMemberBody">
-            <div>
-                <p>ID: 2</p>
-                <p>Email: <a href = 'mailto:'></a></p>
-                <p>GitHub: <a href = 'https://github.com/'></a></p>
-            </div>
-        </div>
-    </div>
-    
+    ${createEmployee(input)}
     </section>
 </body>
 </html>
-    
+    `;
+
+    fs.writeFile('./dist/htmlContent.html', htmlContent, (error) => {});
+}
+
+module.exports.generateHTML = generateHTML;

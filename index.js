@@ -1,10 +1,10 @@
 // link to employee info
-const employeeData = require('./lib/employeeData').employeeData;
-const generateHTML = require('./lib/generateHTML').generateHTML;
+const employeePrompts = require('./src/employeePrompts').employeePrompts;
+const generateHTML = require('./src/generateHTML').generateHTML;
 
 // initializes app
 const init = async () => {
-    const input = await employeeData();
+    const input = await employeePrompts();
     generateHTML(input);
     console.log(input);
 };
